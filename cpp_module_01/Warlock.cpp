@@ -43,8 +43,8 @@ void Warlock::forgetSpell(const std::string &tag) {
   }
 }
 
-void Warlock::launchSpell(const std::string &tag, const ATarget &target) {
+void Warlock::launchSpell(const std::string &tag, const ATarget &ref) {
   if (auto it = book.find(tag); it != book.end()) {
-    it->second->launch(target);
+    it->second->launch(ref);
   }
 }
