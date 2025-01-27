@@ -2,8 +2,7 @@
 
 Warlock::Warlock() {}
 
-Warlock::Warlock(const std::string &name, const std::string &title)
-    : name(name), title(title) {
+Warlock::Warlock(const std::string &name, const std::string &title) : name(name), title(title) {
   std::cout << name << ": This looks like another boring day.\n";
 }
 
@@ -23,17 +22,14 @@ const std::string &Warlock::getTitle() const { return title; }
 
 void Warlock::setTitle(const std::string &title) { this->title = title; }
 
-void Warlock::introduce() const {
-  std::cout << name << ": I am " << name << ", " << title << "!\n";
-};
+void Warlock::introduce() const { std::cout << name << ": I am " << name << ", " << title << "!\n"; };
 
-void Warlock::learnSpell(const ASpell *ref) { book.learnSpell(ref); }
+void Warlock::learnSpell(const ASpell *ptr) { book.learnSpell(ptr); }
 
 void Warlock::forgetSpell(const std::string &tag) { book.forgetSpell(tag); }
 
 void Warlock::launchSpell(const std::string &tag, const ATarget &target) {
-  ASpell *ref = book.createSpell(tag);
-  if (ref != nullptr) {
-    ref->launch(target);
+  if (ASpell *ptr = book.createSpell(tag); ptr) {
+    ptr->launch(target);
   }
 }

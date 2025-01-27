@@ -19,7 +19,7 @@ public:
 
   const std::string &getType() const;
 
-  void getHitBySpell(const ASpell &spell) const;
-
   virtual ATarget *clone() const = 0;
+
+  void getHitBySpell(const ASpell &ref) const;
 };

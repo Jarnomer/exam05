@@ -15,7 +15,7 @@ public:
   SpellBook();
   ~SpellBook();
 
-  void learnSpell(const ASpell *spell);
+  void learnSpell(const ASpell *ptr);
   void forgetSpell(const std::string &tag);
   ASpell *createSpell(const std::string &tag);
 };

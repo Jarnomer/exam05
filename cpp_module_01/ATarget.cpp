@@ -16,6 +16,6 @@ ATarget::~ATarget() {}
 
 const std::string &ATarget::getType() const { return type; }
 
-void ATarget::getHitBySpell(const ASpell &spell) const {
-  std::cout << type << " has been " << spell.getEffects() << "!\n";
+void ATarget::getHitBySpell(const ASpell &ref) const {
+  std::cout << type << " has been " << ref.getEffects() << "!\n";
 }

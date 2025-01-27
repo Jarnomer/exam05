@@ -10,32 +10,28 @@ SpellBook &SpellBook::operator=(const SpellBook &other) {
 }
 
 SpellBook::~SpellBook() {
-  for (auto it = book.begin(); it != book.end(); ++it) {
-    delete it->second;
+  for (auto &it : book) {
+    delete it.second;
   }
   book.clear();
 }
 
-void SpellBook::learnSpell(const ASpell *ref) {
-  if (ref != nullptr) {
-    std::string tag = ref->getName();
-    book[tag] = ref->clone();
+void SpellBook::learnSpell(const ASpell *ptr) {
+  if (ptr) {
+    book.insert({ptr->getName(), ptr->clone()});
   }
 }
 
 void SpellBook::forgetSpell(const std::string &tag) {
-  auto it = book.find(tag);
-  if (it != book.end()) {
+  if (auto it = book.find(tag); it != book.end()) {
     delete it->second;
     book.erase(it);
   }
 }
 
 ASpell *SpellBook::createSpell(const std::string &tag) {
-  ASpell *spell = nullptr;
-  auto it = book.find(tag);
-  if (it != book.end()) {
-    spell = book[tag];
+  if (auto it = book.find(tag); it != book.end()) {
+    return it->second;
   }
-  return (spell);
+  return nullptr;
 }

@@ -26,7 +26,7 @@ public:
 
   void introduce() const;
 
-  void learnSpell(const ASpell *ref);
+  void learnSpell(const ASpell *ptr);
   void forgetSpell(const std::string &tag);
   void launchSpell(const std::string &tag, const ATarget &target);
 };
