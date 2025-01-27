@@ -29,5 +29,5 @@ public:
 
   void learnSpell(const ASpell *spell);
   void forgetSpell(const std::string &tag);
-  void launchSpell(const std::string &tag, const ATarget &target);
+  void launchSpell(const std::string &tag, const ATarget &ref);
 };
