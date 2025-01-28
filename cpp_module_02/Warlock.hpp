@@ -12,6 +12,7 @@ private:
   SpellBook book;
 
   Warlock();
+
   Warlock(const Warlock &other);
   Warlock &operator=(const Warlock &other);
 

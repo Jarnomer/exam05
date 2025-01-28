@@ -9,29 +9,18 @@ SpellBook &SpellBook::operator=(const SpellBook &other) {
   return *this;
 }
 
-SpellBook::~SpellBook() {
-  for (auto &it : book) {
-    delete it.second;
-  }
-  book.clear();
-}
+SpellBook::~SpellBook() {}
 
 void SpellBook::learnSpell(const ASpell *ptr) {
-  if (ptr) {
+  if (ptr)
     book.insert({ptr->getName(), ptr->clone()});
-  }
 }
 
-void SpellBook::forgetSpell(const std::string &tag) {
-  if (auto it = book.find(tag); it != book.end()) {
-    delete it->second;
-    book.erase(it);
-  }
-}
+void SpellBook::forgetSpell(const std::string &tag) { book.erase(tag); }
 
 ASpell *SpellBook::createSpell(const std::string &tag) {
-  if (auto it = book.find(tag); it != book.end()) {
+  auto it = book.find(tag); 
+  if (it != book.end())
     return it->second;
-  }
   return nullptr;
 }

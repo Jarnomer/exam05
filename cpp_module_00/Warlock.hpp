@@ -8,6 +8,7 @@ private:
   std::string title;
 
   Warlock();
+
   Warlock(const Warlock &other);
   Warlock &operator=(const Warlock &other);
 

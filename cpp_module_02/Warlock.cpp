@@ -29,7 +29,7 @@ void Warlock::learnSpell(const ASpell *ptr) { book.learnSpell(ptr); }
 void Warlock::forgetSpell(const std::string &tag) { book.forgetSpell(tag); }
 
 void Warlock::launchSpell(const std::string &tag, const ATarget &ref) {
-  if (ASpell *ptr = book.createSpell(tag); ptr) {
+  ASpell *ptr = book.createSpell(tag);
+  if (ptr)
     ptr->launch(ref);
-  }
 }

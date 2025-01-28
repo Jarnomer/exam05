@@ -14,13 +14,7 @@ Warlock &Warlock::operator=(const Warlock &other) {
   return *this;
 }
 
-Warlock::~Warlock() {
-  std::cout << name << ": My job here is done!\n";
-  for (auto &it : book) {
-    delete it.second;
-  }
-  book.clear();
-}
+Warlock::~Warlock() { std::cout << name << ": My job here is done!\n"; }
 
 const std::string &Warlock::getName() const { return name; }
 
@@ -31,20 +25,14 @@ void Warlock::setTitle(const std::string &title) { this->title = title; }
 void Warlock::introduce() const { std::cout << name << ": I am " << name << ", " << title << "!\n"; };
 
 void Warlock::learnSpell(const ASpell *ptr) {
-  if (ptr) {
+  if (ptr)
     book.insert({ptr->getName(), ptr->clone()});
-  }
 }
 
-void Warlock::forgetSpell(const std::string &tag) {
-  if (auto it = book.find(tag); it != book.end()) {
-    delete it->second;
-    book.erase(it);
-  }
-}
+void Warlock::forgetSpell(const std::string &tag) { book.erase(tag); }
 
 void Warlock::launchSpell(const std::string &tag, const ATarget &ref) {
-  if (auto it = book.find(tag); it != book.end()) {
+  auto it = book.find(tag);
+  if (it != book.end())
     it->second->launch(ref);
-  }
 }

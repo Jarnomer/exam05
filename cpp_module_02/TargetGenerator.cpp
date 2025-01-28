@@ -9,29 +9,18 @@ TargetGenerator &TargetGenerator::operator=(const TargetGenerator &other) {
   return *this;
 }
 
-TargetGenerator::~TargetGenerator() {
-  for (auto &it : book) {
-    delete it.second;
-  }
-  book.clear();
-}
+TargetGenerator::~TargetGenerator() {}
 
 void TargetGenerator::learnTargetType(const ATarget *ptr) {
-  if (ptr) {
+  if (ptr)
     book.insert({ptr->getType(), ptr->clone()});
-  }
 }
 
-void TargetGenerator::forgetTargetType(const std::string &tag) {
-  if (auto it = book.find(tag); it != book.end()) {
-    delete it->second;
-    book.erase(it);
-  }
-}
+void TargetGenerator::forgetTargetType(const std::string &tag) { book.erase(tag); }
 
 ATarget *TargetGenerator::createTarget(const std::string &tag) {
-  if (auto it = book.find(tag); it != book.end()) {
+  auto it = book.find(tag); 
+  if (it != book.end())
     return it->second;
-  }
   return nullptr;
 }

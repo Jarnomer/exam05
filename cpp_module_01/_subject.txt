@@ -1,28 +1,3 @@
-Mod01 TLDR:
---------------------------------------------------------------------------------
-Create ASpell class with two protected string attributes "name" and "effects".
-Build basic canonical form which is very similar to Warlock, all are public now.
-Set deconstructor virtual and add "virtual ASpell * clone() const = 0".
-
-Create new ATarget class based on ASpell.
-Add "class ATarget;" to ASpell hpp and #include "ATarget.hpp" to its cpp.
-Repeat the previous step but vice versa for ATarget.
-Add launch method to ASpell that uses "target.getHitBySpell(*this)".
-Add getHitBySpell to ATarget that uses "spell.getEffects()".
-
-Create Fwoosh that publicly inherits ASpell.
-It has public default constructor and deconstructor.
-Remember to use ASpell in constructor eg. ( ... : ASpell("Fwoosh", "fwooshed")).
-Finally add "ASpell * clone() const override;" which will "return new Fwoosh()".
-Then create Dummy class that is the same as Fwoosh but inherits the ATarget.
-
-Add private attribute "std::map<std::string, ASpell*> book" to your Warlock.
-Add public methods learnSpell, forgetSpell and launchSpell according the subject.
-They take const * / & as paramenters but the methods themselves are not const.
-They use book.find(tag) / .begin() / .end() iterators from std::map with auto it.
-Also remember to add free loop into Warlock's deconstructor (is this needed?).
---------------------------------------------------------------------------------
-
 Assignment name  : cpp01_02
 Expected files   : Warlock.cpp Warlock.hpp
                    ASpell.hpp ASpell.cpp

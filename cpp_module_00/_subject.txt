@@ -1,13 +1,3 @@
-Mod00 TLDR:
---------------------------------------------------------------------------------
-Create Warlock class with two private string attributes "name" and "title".
-Build basic canonical form, only parametric constructor and deconstructor are public.
-Parametric constructor takes the "name" and "title", both are const string &.
-Create const getters for the attributes which return const string &.
-Create non-const setter for title that takes const string &.
-Add void introduce method according the subject.
---------------------------------------------------------------------------------
-
 Assignment name  : cpp_module_00
 Expected files   : Warlock.cpp Warlock.hpp
 --------------------------------------------------------------------------------

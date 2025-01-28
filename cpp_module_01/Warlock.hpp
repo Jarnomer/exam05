@@ -13,6 +13,7 @@ private:
   std::map<std::string, ASpell *> book;
 
   Warlock();
+
   Warlock(const Warlock &other);
   Warlock &operator=(const Warlock &other);
 
